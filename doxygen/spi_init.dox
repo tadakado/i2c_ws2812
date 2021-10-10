@@ -1,0 +1,56 @@
+/**
+\addtogroup doc_driver_spi_init
+ 
+\brief Driver for SPI Initialisation
+
+The **SPI Init** driver initializes the SPI according
+to the user's data entry in START.
+
+
+\section doc_driver_spi_init_configuration Driver Configuration
+
+The SPI Init driver is configured using START. The user can 
+select master or slave mode, desired SCK clock frequency, 
+I/O pin mapping etc.
+
+If several SPI hardware instances are available on the device, 
+the user can select which SPI instance the driver shall use.
+
+
+\section doc_driver_spi_init_functional Functional Description
+
+The Init driver supplies only one function, the init()-function
+automatically called by a call to atmel_start_init() in main().
+
+
+\section doc_driver_spi_init_hardware Hardware Dependencies
+
+The SPI Init driver uses some sort of hardware that implements 
+SPI functionality.
+
+Different MCUs have SPI hardware with different names and 
+functionalities, such as SPI, USART, USI etc. In START, the user 
+selects a device and adds the SPI Init driver. A device
+may have several possible hardware resources available for 
+the driver, such as SPI0, SPI1 etc. In this case the user 
+must select which one to use.
+
+The configuration options in START displays options that are 
+dependent on the hardware used to implement the SPI driver.
+For example, an option may allow changing the SCK frequency 
+of the underlying SPI hardware.
+
+
+\section doc_driver_spi_init_software Software Dependencies
+
+If configuring the Init driver to have the SPI generate interrupts,
+make sure that global interrupts are enabled (using sei()) and 
+that the Interrupt Controller, if present, is configured so that 
+any interrupts are serviced correctly.
+
+
+\section doc_driver_spi_init_code Code example
+
+Not applicable for init drivers.
+
+*/
