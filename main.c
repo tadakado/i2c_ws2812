@@ -41,7 +41,7 @@ PA7(3):(SPI MISO) CCL LUT1-OUT (WS2812 RGB LEDs) *
 
 ### Test
 
-Test code for I2C master is in the Arduino sketch "I2C_test_master.ino".
+Test code for I2C master is in the Arduino sketch "arduino/I2C_test_master.ino".
 */
 
 #include <atmel_start.h>
