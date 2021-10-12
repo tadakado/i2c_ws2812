@@ -50,7 +50,7 @@ Test code for I2C master is in the Arduino sketch "I2C_test_master.ino".
 #include <avr/sleep.h>
 
 #define I2C_SADDR 0x08
-#define Max_LEDs 29 // max 29(?) for 128 bytes SRAM, try smaller number if it does not work
+#define Max_LEDs 29 // max 29 LEDs (128 bytes SRAM) or 72 (256 bytes SRAM), try smaller number if it does not work
 #define Num_LEDs_REG 0xff
 #define Sleep_Mode SLEEP_MODE_PWR_DOWN // SLEEP_MODE_IDLE / SLEEP_MODE_STANDBY/ SLEEP_MODE_PWR_DOWN
 
