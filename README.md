@@ -4,7 +4,7 @@ I2C to WS2812 (RGB LED) converter
 
 ## MCU and Peripherals ###
 
-The code is tested on ATtiny212. ATtiny 0 & 1 series may work.
+The code is tested on ATtiny 0 & 1 series (ATtiny212 & ATtiny402).
 I2C, CCL, SPI, and TCA peripherals are used.
 
 ## I2C ###
@@ -15,8 +15,8 @@ Each register for a LED has 3-byte data. You can send <LED #> <Green> <Red> <Blu
 Multiple LED data can be transfered without specifying the next LED.
 That is, <LED 0> <Green 0> <Red 0> <Blue 0> <Green 1> <Red 2> <Blue 3> ... .
 Data exceeding the limit of the memory will be omitted.
-The maximum number of LEDs for ATtiny212 is 29.
-The number can be changed in other MCUs.
+The maximum number of LEDs for ATtiny202/212 and ATtiny402/412 are 29 and 72, respectively.
+The numbers will change in other MCUs or with code modifications.
 
 ### Send RGB data to WS2812
 
