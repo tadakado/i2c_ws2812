@@ -15,18 +15,19 @@ Each register for a LED has 3-byte data. You can send <LED #> <Green> <Red> <Blu
 Multiple LED data can be transfered without specifying the next LED.
 That is, <LED 0> <Green 0> <Red 0> <Blue 0> <Green 1> <Red 2> <Blue 3> ... .
 Data exceeding the limit of the memory will be omitted.
-The maximum number of LEDs for ATtiny202/212 and ATtiny402/412 are 29 and 72, respectively.
+The maximum number of LEDs (Max_LEDs) for ATtiny202/212 and ATtiny402/412 are 29 and 72, respectively.
 The numbers will change in other MCUs or with code modifications.
 
 ### Send RGB data to WS2812
 
-When writing the number of LEDs to the special register (0xff), the controller starts to send the data to WS2812.
+When writing the number of LEDs (Num_of_LEDs) to the special register (0xff), the controller starts to send the data to WS2812.
 
 ### Registers
 
-| Register | Reg0 | Reg1 | ... | Reg28 | Reg255 |
-| - | - | - | - | - | - |
-| Data | G0, R0, B0 | G1, R1, B1 | ... | G28, R28, B28 | Num_of_LEDs |
+| Register | Reg0 | Reg1 | ... | Reg28 | ... | Reg255 |
+| - | - | - | - | - | - | - |
+| Data (write) | G0, R0, B0 | G1, R1, B1 | ... | G28, R28, B28 | ... | Num_of_LEDs |
+| Data (read) | G0, R0, B0 | G1, R1, B1 | ... | G28, R28, B28 | ... | Max_LEDs (29 or 72) |
 
 ##  WS2812 (RGB LED) ###
 
@@ -49,3 +50,7 @@ Reference: Microchip Application Notes AN2387 http://ww1.microchip.com/downloads
 ## Test
 
 Test code for I2C master is in the Arduino sketch "arduino/I2C_test_master.ino".
+
+## Hex files
+
+Hex files for ATtiny202/212 and ATtiny402/412 are available.
