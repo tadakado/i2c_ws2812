@@ -130,14 +130,27 @@ void write_to_LEDs()
 
 void I2C_address_handler()
 {
+	uint8_t data;
+
+	data = I2C_0_read();
 	I2C_0_send_ack();
-	i2c_count = 0xff;
-	i2c_reg = 0xff;
+	if (data & 0x01) { // read
+		i2c_count = 0x00;
+	} else { // write
+		i2c_count = 0xff;
+	}
 }
 
 void I2C_read_handler()
 {
-	I2C_0_write(0x0c);
+	if (i2c_reg == Num_LEDs_REG) {
+		I2C_0_write(Max_LEDs);
+	} else if (i2c_reg * 3 + i2c_count < Max_LEDs * 3) {
+		I2C_0_write(LED_data[i2c_reg * 3 + i2c_count]);
+	} else {
+		I2C_0_write(0xff);
+	}
+	i2c_count++;
 }
 
 void I2C_write_handler()
