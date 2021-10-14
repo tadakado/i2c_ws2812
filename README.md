@@ -47,6 +47,14 @@ Reference: Microchip Application Notes AN2387 http://ww1.microchip.com/downloads
 
 \* 3 pins for I2C and WS2812.
 
+    ATtiny202/212/402/412
+           ┌────┐
+        VCC│1  8│GND
+           │2  7│
+     WS2812│3  6│
+    I2C SDA│4  5│I2C SCL
+           └────┘
+
 ## Test
 
 Test code for I2C master is in the Arduino sketch "arduino/I2C_test_master.ino".
