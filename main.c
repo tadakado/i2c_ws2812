@@ -19,8 +19,8 @@ Data exceeding the limit of the memory will be omitted.
 (2) Send RGB data to WS2812
 When writing the number of LEDs to the special register (0xff), the controller starts to send the data to WS2812.
 
-Register: [ Reg0 ], [ Reg1 ], ..., [  Reg28  ], [ Reg255 ]
-Data:     G0,R0,B0, G1,R1,B1, ..., G28,R28,B28, Num_of_LEDs
+Register: [ Reg0 ], [ Reg1 ], ..., [  Reg28  ], ..., [ Reg255 ]
+Data:     G0,R0,B0, G1,R1,B1, ..., G28,R28,B28, ..., Num_of_LEDs
 
 ###  WS2812 (RGB LED) ###
 
@@ -50,7 +50,7 @@ Test code for I2C master is in the Arduino sketch "arduino/I2C_test_master.ino".
 #include <avr/sleep.h>
 
 #define I2C_SADDR 0x08
-#define Max_LEDs 29 // max 29 LEDs (128 bytes SRAM) or 72 (256 bytes SRAM), try smaller number if it does not work
+#define Max_LEDs 29 // max 29 LEDs (128 bytes SRAM) or 71 (256 bytes SRAM), try smaller number if it does not work
 #define Num_LEDs_REG 0xff
 #define Sleep_Mode SLEEP_MODE_PWR_DOWN // SLEEP_MODE_IDLE / SLEEP_MODE_STANDBY/ SLEEP_MODE_PWR_DOWN
 
@@ -59,6 +59,7 @@ uint8_t num_LEDs = 0;
 uint8_t i2c_count = 0;
 uint8_t i2c_reg = 0xff;
 
+void sleep(void);
 void update_LEDs(void);
 void write_to_LEDs(void);
 void I2C_read_handler(void);
@@ -82,6 +83,8 @@ int main(void)
 
 	/* Sleep mode */
 	set_sleep_mode(Sleep_Mode);
+	ENABLE_INTERRUPTS();
+	sleep();
 
 	while (1) {
 	}
