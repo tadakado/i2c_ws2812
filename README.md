@@ -11,9 +11,9 @@ I2C, CCL, SPI, and TCA peripherals are used.
 
 ### Write RGB data
 
-Each register for a LED has 3-byte data. You can send <LED #> <Green> <Red> <Blue> followed by the slave address (0x08).
+Each register for a LED has 3-byte data. You can send <LED #> <Green> <Red> <Blue> after the slave address (0x08).
 Multiple LED data can be transfered without specifying the next LED.
-That is, <LED 0> <Green 0> <Red 0> <Blue 0> <Green 1> <Red 2> <Blue 3> ... .
+That is, 0x00 <Green 0> <Red 0> <Blue 0> <Green 1> <Red 2> <Blue 3> ... .
 Data exceeding the limit of the memory will be omitted.
 The maximum number of LEDs (Max_LEDs) for ATtiny202/212 and ATtiny402/412 are 29 and 71, respectively.
 The numbers will change in other MCUs or with code modifications.
