@@ -62,3 +62,16 @@ Test code for I2C master is in the Arduino sketch "arduino/I2C_test_master.ino".
 ## Hex files
 
 Hex files for ATtiny202/212 and ATtiny402/412 are available.
+
+## Programming a device
+
+```
+pip install https://github.com/mraardvark/pyupdi/archive/master.zip
+pyupdi -d tiny212 -c COM3 -f i2c_ws2812_212.hex
+```
+If you can not find the pyupdi executable, following commands may help.
+```
+pip show -f pyupdi
+python -m site --user-site
+```
+You can also use pymcuprog from MICROCHIP.
